@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4880ff;
+  --color-secondary: #202224;
+  --color-tertiary: #606060;
+  --color-quinary: #e5e7eb;
+  --color-lighttext: #a3aed0;
+  --color-darkpurple: #2b3674;
+  --color-background: #f5f6fa;
+}
+
+@layer utilities {
+  table thead {
+    @apply bg-[#F1F4F9];
+  }
+
+  table thead th {
+    @apply px-4 py-3 text-secondary font-semibold text-sm;
+  }
+
+  table thead th:first-child {
+    @apply rounded-s-lg;
+  }
+
+  table thead th:last-child {
+    @apply rounded-e-lg;
+  }
+
+  table tbody td {
+    @apply text-center px-4 py-3 text-tertiary  text-sm;
+  }
+  .flex-all-center {
+    @apply flex items-center justify-center;
+  }
+}

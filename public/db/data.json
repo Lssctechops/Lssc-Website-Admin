@@ -1,0 +1,105 @@
+{
+  "navigation": [
+    {
+      "icon": "ri-dashboard-line",
+      "route": "/",
+      "label": "dashboard",
+      "hashAccess": ["admin"]
+    },
+    {
+      "icon": "ri-pages-line",
+      "route": "/website-content",
+      "label": "website content",
+      "hashAccess": ["admin"]
+    },
+    {
+      "icon": "ri-shield-user-line",
+      "route": "/trainer",
+      "label": "trainer",
+      "hashAccess": ["subadmin", "admin"]
+    },
+    {
+      "icon": "ri-user-settings-line",
+      "route": "/assessor",
+      "label": "assessor",
+      "hashAccess": ["admin"]
+    },
+    {
+      "icon": "ri-group-line",
+      "route": "/users",
+      "label": "users",
+      "hashAccess": ["admin"]
+    },
+    {
+      "icon": "ri-user-line",
+      "route": "/candidate",
+      "label": "candidate",
+      "hashAccess": ["admin"]
+    },
+    {
+      "icon": "ri-folder-user-line ",
+      "route": "/talent-bank",
+      "label": "talent-bank",
+      "hashAccess": ["admin"]
+    }
+  ],
+
+  "information": [
+    {
+      "img": "/img/book.jpg",
+      "title": "hero section",
+      "points": ["Banner management with ( Img, Title )"],
+      "route": "/website-content/hero-section"
+    },
+    {
+      "img": "/img/msg.jpg",
+      "title": "notice and updates",
+      "points": ["notice & updates", "training", "assessment"],
+      "route": "/website-content/notices-updates"
+    },
+    {
+      "img": "/img/courses.jpg",
+      "title": "courses",
+      "points": ["industry", "candidate"],
+      "route": "/website-content/courses"
+    },
+    {
+      "img": "/img/blog.jpg",
+      "title": "blog management",
+      "points": ["news", "events", "courses"],
+      "route": "/website-content/blog-management"
+    },
+    {
+      "img": "/img/newsppaper.jpg",
+      "title": "news letter management",
+      "points": ["send bulk email for sharing news"],
+      "route": "/website-content/news-letter-management"
+    },
+    {
+      "img": "/img/book.jpg",
+      "title": "Resource management",
+      "points": ["Add new resource"],
+      "route": "/website-content/newslatterandbookmgmt"
+    },
+    {
+      "img": "/img/book.jpg",
+      "title": "governing council",
+      "points": [
+        "add / edit council members",
+        "chairman card",
+        "display order and visibility"
+      ],
+      "route": "/website-content/governing-council"
+    },
+    {
+      "img": "/img/book.jpg",
+      "title": "team members",
+      "points": [
+        "add / edit team members",
+        "featured CEO card",
+        "email, phone, linkedin"
+      ],
+      "route": "/website-content/team-members"
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "_id": "gc-001",
+    "name": "Shri Sanjay Leekha",
+    "designation": "Chairman, Leather Sector Skill Council",
+    "company": "CMD, Alpine Apparels Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/2798584d-3d85-4f2d-8461-0a25f190e700/public",
+    "order": 1,
+    "isActive": true,
+    "isChairman": true
+  },
+  {
+    "_id": "gc-002",
+    "name": "Shri Mukhtarul Amin",
+    "designation": "Former Chairman, LSSC",
+    "company": "CMD, Super House Ltd",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/be5ec496-fd75-476a-775a-9ad008643e00/public",
+    "order": 2,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-003",
+    "name": "Shri P.R. Aqeel Ahmed",
+    "designation": "Former Chairman, LSSC",
+    "company": "MD, Florence Shoe Company Pvt. Ltd",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/7daccee0-ed8d-4953-ad6e-028f92a98100/public",
+    "order": 3,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-004",
+    "name": "Shri Habib Hussain",
+    "designation": "Former Chairman, LSSC",
+    "company": "Director, AV Thomas",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/6631a9a7-87b5-4019-ff6a-bca86c5e4600/public",
+    "order": 4,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-005",
+    "name": "Shri Rajendra K. Jalan",
+    "designation": "Director",
+    "company": "AFPL Global Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/6de98bf3-d491-48c0-9af4-fab9faaa5700/public",
+    "order": 5,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-006",
+    "name": "Shri K.R. Vijayan",
+    "designation": "Managing Director",
+    "company": "Good Leather Shoes Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/9ad50805-a20d-418b-f5e0-5068b4085900/public",
+    "order": 6,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-007",
+    "name": "Shri Rakesh Suri",
+    "designation": "Director",
+    "company": "Irus International Pvt. Ltd",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/af9b74fe-9c45-47b1-4128-054ce44b8300/public",
+    "order": 7,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-008",
+    "name": "Shri Puran Chand Dawar",
+    "designation": "Managing Director",
+    "company": "Dawar Footwear Pvt. Ltd",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/fc3107e7-5e1d-4ffa-7df5-dbd8a8bf5200/public",
+    "order": 8,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-009",
+    "name": "Shri Naresh S. Bhasin",
+    "designation": "Managing Director",
+    "company": "Ram Fashion Exports Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/85b01249-136b-4964-0f27-3332e191c000/public",
+    "order": 9,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-010",
+    "name": "Shri Motilal Sethi",
+    "designation": "Managing Director",
+    "company": "Saroj International Leathers Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/e4680a6d-550a-47ba-6f91-c88462f64500/public",
+    "order": 10,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-011",
+    "name": "Shri Gopal Gupta",
+    "designation": "Managing Director",
+    "company": "Gupta HC Overseas Exports (I) Pvt. Ltd",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/51602bc2-c894-4a76-5385-604295571900/public",
+    "order": 11,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-012",
+    "name": "Shri N. Shafeeq Ahmed",
+    "designation": "Managing Director",
+    "company": "Shafeeq Shameel & Co",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/ca161eb2-e2af-4f30-c3b0-efb1f1594b00/public",
+    "order": 12,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-013",
+    "name": "Shri Ramesh Kumar Juneja",
+    "designation": "Director",
+    "company": "JC International",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/01efe762-0fb2-462c-9daa-7f52d691d200/public",
+    "order": 13,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-014",
+    "name": "Shri Tauseef Ahmed Mirza",
+    "designation": "Director",
+    "company": "Mirza International Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/fd1587e9-5878-47d8-79a6-52a3a832e600/public",
+    "order": 14,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-015",
+    "name": "Shri Rajiv Bhatia",
+    "designation": "Director",
+    "company": "D2 International",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/92beca67-52be-4853-8fbe-e36e88fac300/public",
+    "order": 15,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-016",
+    "name": "Shri Sunil Taneja",
+    "designation": "Director",
+    "company": "M/s. Cheyyar SEZ Developers",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/2051bd1d-2b56-4ac1-5972-c46ea5332a00/public",
+    "order": 16,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-017",
+    "name": "Dr. J. Rafiq Ahmed",
+    "designation": "Managing Director",
+    "company": "M/s. Kothari Industrial Corpn. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/a4f47a67-4bff-43ff-9caf-6fcdbe703700/public",
+    "order": 17,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-018",
+    "name": "Shri Sahil Malik",
+    "designation": "Managing Director",
+    "company": "M/s. Da Milano Leather Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/91dd01c8-d5ef-41cb-77a6-7bc9f35d1f00/public",
+    "order": 18,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-019",
+    "name": "Shri Dilip Kapur",
+    "designation": "Managing Director",
+    "company": "M/s. Hidesign India Pvt. Ltd",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/e2945b00-5027-4353-97b8-ca723bb95000/public",
+    "order": 19,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-020",
+    "name": "Shri Javed Iqbal",
+    "designation": "Managing Director",
+    "company": "Naaz Exports Pvt. Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/2a92b3f9-ab7b-4c3d-2207-7aa62e157b00/public",
+    "order": 20,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-021",
+    "name": "Shri Kumar Nitesh",
+    "designation": "CEO - Footwear Business",
+    "company": "M/s. Reliance Retail Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/58e7e526-ef6b-4fc0-aa82-54815b58b400/public",
+    "order": 21,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-022",
+    "name": "Mr. P. S. Suresh",
+    "designation": "CEO of Calsea Footwear (P) Ltd.",
+    "company": "A wholly-owned subsidiary of TATA International Limited",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/08f33ecc-02a2-41f0-5ed0-61a691056800/public",
+    "order": 22,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-023",
+    "name": "Shri Anjan Kundu",
+    "designation": "Head - Supply Chain Management",
+    "company": "M/s. Bata India Ltd.",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/73ced810-c765-4637-ac59-a292b9593c00/public",
+    "order": 23,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-024",
+    "name": "Shri Sanjay Gupta",
+    "designation": "President",
+    "company": "IFCOMA",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/75809d65-a157-4936-68e1-6f7dcd244a00/public",
+    "order": 24,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-025",
+    "name": "Dr. Dnyaneshwar Manohar Mulay",
+    "designation": "Nominee Director",
+    "company": "National Skill Development Corporation",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/6d31debd-05ce-4100-c6ce-4f742e4d8a00/public",
+    "order": 25,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-026",
+    "name": "Shri R. Selvam IAS",
+    "designation": "Executive Director",
+    "company": "Council for Leather Exports",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/234388a5-26c3-4e09-ec51-5d67b2ea4900/public",
+    "order": 26,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-027",
+    "name": "Dr. P. Thanikaivelan",
+    "designation": "Director",
+    "company": "Central Leather Research Institute",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/18bd254e-0a16-4b05-67da-c93de6924900/public",
+    "order": 27,
+    "isActive": false,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-028",
+    "name": "Shri Vivek Sharma, IRS",
+    "designation": "Managing Director",
+    "company": "Footwear Design & Development Institute (FDDI)",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/60b6ff4d-4d2f-4779-d3d9-020285d01c00/public",
+    "order": 28,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-029",
+    "name": "Shri K. Murali",
+    "designation": "Director",
+    "company": "Central Footwear Training Institute",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/afb6dfac-75fc-4858-55dd-ad0c64bf7f00/public",
+    "order": 29,
+    "isActive": true,
+    "isChairman": false
+  },
+  {
+    "_id": "gc-030",
+    "name": "Shri Dharmendra Kumar",
+    "designation": "Nominee Director",
+    "company": "NSDC",
+    "image": "https://imagedelivery.net/QG8_dZ1qAgTI1Cq9RSDiZg/7f369bd5-ad1a-4d8c-407c-cb89286e9800/public",
+    "order": 30,
+    "isActive": true,
+    "isChairman": false
+  }
+]
