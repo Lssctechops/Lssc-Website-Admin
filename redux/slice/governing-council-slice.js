@@ -14,63 +14,78 @@ const authHeader = () => {
   };
 };
 
-// GET all members
+// The API stores images as thumbnail.url and order as position.
+// The admin UI uses `image` and `order`. These map between them.
+const fromApi = (m) => ({
+  ...m,
+  image: m?.thumbnail?.url || "",
+  order: m?.position ?? 0,
+});
+const toApi = (p) => ({
+  name: p.name,
+  designation: p.designation,
+  company: p.company,
+  thumbnail: { url: p.image || "", publicId: p.publicId || "" },
+  position: p.order ?? 0,
+  isChairman: p.isChairman ?? false,
+  isActive: p.isActive ?? true,
+});
+
+// GET all members (public read)
 export const fetchCouncilMembers = createAsyncThunk(
   "governingCouncil/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
-        `${BASE_URL}/api/governing-council`,
-        authHeader()
-      );
-      return res.data?.data || res.data;
+      const res = await axios.get(`${BASE_URL}/api/public/governingCouncil`);
+      const list = res.data?.data || [];
+      return list.map(fromApi);
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
     }
   }
 );
 
-// CREATE member
+// CREATE member (admin write)
 export const createCouncilMember = createAsyncThunk(
   "governingCouncil/create",
   async (payload, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        `${BASE_URL}/api/governing-council`,
-        payload,
+        `${BASE_URL}/api/admin/governingCouncil`,
+        toApi(payload),
         authHeader()
       );
-      return res.data?.data || res.data;
+      return fromApi(res.data?.data || res.data);
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
     }
   }
 );
 
-// UPDATE member
+// UPDATE member (admin write)
 export const updateCouncilMember = createAsyncThunk(
   "governingCouncil/update",
   async ({ id, payload }, { rejectWithValue }) => {
     try {
       const res = await axios.put(
-        `${BASE_URL}/api/governing-council/${id}`,
-        payload,
+        `${BASE_URL}/api/admin/governingCouncil/${id}`,
+        toApi(payload),
         authHeader()
       );
-      return res.data?.data || res.data;
+      return fromApi(res.data?.data || res.data);
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
     }
   }
 );
 
-// DELETE member
+// DELETE member (admin write)
 export const deleteCouncilMember = createAsyncThunk(
   "governingCouncil/delete",
   async (id, { rejectWithValue }) => {
     try {
       await axios.delete(
-        `${BASE_URL}/api/governing-council/${id}`,
+        `${BASE_URL}/api/admin/governingCouncil/${id}`,
         authHeader()
       );
       return id;
@@ -82,16 +97,10 @@ export const deleteCouncilMember = createAsyncThunk(
 
 const governingCouncilSlice = createSlice({
   name: "governingCouncil",
-  initialState: {
-    members: [],
-    loading: false,
-    saving: false,
-    error: null,
-  },
+  initialState: { members: [], loading: false, saving: false, error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // fetch
       .addCase(fetchCouncilMembers.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -104,8 +113,6 @@ const governingCouncilSlice = createSlice({
         state.loading = false;
         state.error = action.payload?.message || "Failed to load members";
       })
-
-      // create
       .addCase(createCouncilMember.pending, (state) => {
         state.saving = true;
       })
@@ -116,8 +123,6 @@ const governingCouncilSlice = createSlice({
       .addCase(createCouncilMember.rejected, (state) => {
         state.saving = false;
       })
-
-      // update
       .addCase(updateCouncilMember.pending, (state) => {
         state.saving = true;
       })
@@ -132,8 +137,6 @@ const governingCouncilSlice = createSlice({
       .addCase(updateCouncilMember.rejected, (state) => {
         state.saving = false;
       })
-
-      // delete
       .addCase(deleteCouncilMember.fulfilled, (state, action) => {
         state.members = state.members.filter(
           (m) => (m._id || m.id) !== action.payload
