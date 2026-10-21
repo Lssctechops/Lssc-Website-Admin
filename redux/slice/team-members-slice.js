@@ -14,55 +14,79 @@ const authHeader = () => {
   };
 };
 
+// The API stores images as thumbnail.url and order as position.
+// The admin UI uses `image` and `order`. These map between them.
+const fromApi = (m) => ({
+  ...m,
+  image: m?.thumbnail?.url || "",
+  order: m?.position ?? 0,
+});
+const toApi = (p) => ({
+  name: p.name,
+  designation: p.designation,
+  email: p.email || "",
+  mobile: p.mobile || "",
+  linkedin: p.linkedin || "",
+  thumbnail: { url: p.image || "", publicId: p.publicId || "" },
+  position: p.order ?? 0,
+  isCeo: p.isCeo ?? false,
+  isActive: p.isActive ?? true,
+});
+
+// GET all team members (public read)
 export const fetchTeamMembers = createAsyncThunk(
   "teamMembers/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`${BASE_URL}/api/team-members`, authHeader());
-      return res.data?.data || res.data;
+      const res = await axios.get(`${BASE_URL}/api/public/teamMember`);
+      const list = res.data?.data || [];
+      return list.map(fromApi);
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
     }
   }
 );
 
+// CREATE team member (admin write)
 export const createTeamMember = createAsyncThunk(
   "teamMembers/create",
   async (payload, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        `${BASE_URL}/api/team-members`,
-        payload,
+        `${BASE_URL}/api/admin/teamMember`,
+        toApi(payload),
         authHeader()
       );
-      return res.data?.data || res.data;
+      return fromApi(res.data?.data || res.data);
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
     }
   }
 );
 
+// UPDATE team member (admin write)
 export const updateTeamMember = createAsyncThunk(
   "teamMembers/update",
   async ({ id, payload }, { rejectWithValue }) => {
     try {
       const res = await axios.put(
-        `${BASE_URL}/api/team-members/${id}`,
-        payload,
+        `${BASE_URL}/api/admin/teamMember/${id}`,
+        toApi(payload),
         authHeader()
       );
-      return res.data?.data || res.data;
+      return fromApi(res.data?.data || res.data);
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
     }
   }
 );
 
+// DELETE team member (admin write)
 export const deleteTeamMember = createAsyncThunk(
   "teamMembers/delete",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`${BASE_URL}/api/team-members/${id}`, authHeader());
+      await axios.delete(`${BASE_URL}/api/admin/teamMember/${id}`, authHeader());
       return id;
     } catch (error) {
       return rejectWithValue(error?.response?.data || { message: error.message });
