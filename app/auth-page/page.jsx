@@ -1,13 +1,14 @@
 "use client";
 
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { loginuser } from "@/redux/slice/auth-slice";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 export default function LoginPage() {
-  const router = useRouter();
-  const [formdata, setFormdata] = useState({ email: "", password: "" });
+  const dispatch = useDispatch();
+
+  const [formdata, setFormdata] = useState({ mobile: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function LoginPage() {
       const saved = localStorage.getItem("rememberedLogin");
       if (saved) {
         const parsed = JSON.parse(saved);
-        setFormdata({ email: parsed.email || "", password: parsed.password || "" });
+        setFormdata({ mobile: parsed.mobile || "", password: parsed.password || "" });
         setRemember(true);
       }
     } catch {}
@@ -27,27 +28,40 @@ export default function LoginPage() {
     setFormdata((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    const { mobile, password } = formdata;
+
+    if (!mobile || !password) {
+      toast.error("Please enter mobile number and password.");
+      return;
+    }
+    if (mobile.length !== 10 || !/^\d{10}$/.test(mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
     setLoading(true);
     try {
+      await dispatch(loginuser({ mobile, password })).unwrap();
+
       if (remember) {
-        localStorage.setItem("rememberedLogin", JSON.stringify(formdata));
+        localStorage.setItem("rememberedLogin", JSON.stringify({ mobile, password }));
       } else {
         localStorage.removeItem("rememberedLogin");
       }
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          name: "Admin (Dev)",
-          email: formdata.email || "admin@local",
-          role: "superadmin",
-        })
-      );
-    } catch {}
-    Cookies.set("token", "dev-token-123", { expires: 7, path: "/" });
-    toast.success("Signed in (local)");
-    window.location.href = "/";
+
+      toast.success("Login successful");
+      // hard redirect so the middleware sees the new token cookie
+      window.location.href = "/";
+    } catch (error) {
+      const msg =
+        typeof error === "string"
+          ? error
+          : error?.message || "Login failed. Check your mobile and password.";
+      toast.error(msg);
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,29 +72,35 @@ export default function LoginPage() {
             <i className="ri-shield-keyhole-line" />
           </div>
           <h1 className="text-2xl font-bold text-white">Admin Panel</h1>
-          <p className="mt-1 text-sm text-white/60">Local development login</p>
+          <p className="mt-1 text-sm text-white/60">Leather Sector Skill Council</p>
         </div>
 
         <div className="rounded-2xl bg-white p-8 shadow-2xl">
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">Email</label>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Mobile Number
+              </label>
               <div className="flex items-center rounded-lg border border-gray-300 px-3 focus-within:border-[#2B3674] focus-within:ring-2 focus-within:ring-[#2B3674]/15">
-                <i className="ri-mail-line text-gray-400" />
+                <span className="select-none pr-2 text-sm text-gray-500">+91</span>
                 <input
-                  type="text"
-                  name="email"
-                  value={formdata.email}
+                  type="tel"
+                  inputMode="numeric"
+                  name="mobile"
+                  maxLength={10}
+                  value={formdata.mobile}
                   onChange={handleChange}
-                  placeholder="anything@local"
-                  className="w-full px-2 py-2.5 text-sm outline-none"
+                  placeholder="Enter mobile number"
+                  className="w-full px-1 py-2.5 text-sm outline-none"
                   disabled={loading}
                 />
               </div>
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">Password</label>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Password
+              </label>
               <div className="flex items-center rounded-lg border border-gray-300 px-3 focus-within:border-[#2B3674] focus-within:ring-2 focus-within:ring-[#2B3674]/15">
                 <i className="ri-lock-2-line text-gray-400" />
                 <input
@@ -88,7 +108,7 @@ export default function LoginPage() {
                   name="password"
                   value={formdata.password}
                   onChange={handleChange}
-                  placeholder="anything"
+                  placeholder="Enter password"
                   className="w-full px-2 py-2.5 text-sm outline-none"
                   disabled={loading}
                 />
@@ -117,15 +137,15 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#2B3674] py-2.5 font-medium text-white transition-colors hover:bg-[#1f2957]"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#2B3674] py-2.5 font-medium text-white transition-colors hover:bg-[#1f2957] disabled:opacity-60"
             >
-              Login
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
         </div>
 
         <p className="mt-5 text-center text-xs text-white/50">
-          Leather Sector Skill Council · Admin (local)
+          Leather Sector Skill Council · Admin
         </p>
       </div>
     </div>
