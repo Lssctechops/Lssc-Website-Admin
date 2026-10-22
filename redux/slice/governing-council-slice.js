@@ -36,7 +36,7 @@ export const fetchCouncilMembers = createAsyncThunk(
   "governingCouncil/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`${BASE_URL}/api/public/governingCouncil`);
+      const res = await axios.get(`${BASE_URL}/api/public/governingCouncil?limit=500`);
       const list = res.data?.data || [];
       return list.map(fromApi);
     } catch (error) {

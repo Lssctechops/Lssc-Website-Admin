@@ -38,7 +38,7 @@ export const fetchTeamMembers = createAsyncThunk(
   "teamMembers/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`${BASE_URL}/api/public/teamMember`);
+      const res = await axios.get(`${BASE_URL}/api/public/teamMember?limit=500`);
       const list = res.data?.data || [];
       return list.map(fromApi);
     } catch (error) {
