@@ -1,13 +1,12 @@
 "use client";
 
-import { loginuser } from "@/redux/slice/auth-slice";
+import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+
+const API_URL = "https://lssc-api.onrender.com";
 
 export default function LoginPage() {
-  const dispatch = useDispatch();
-
   const [formdata, setFormdata] = useState({ mobile: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(false);
@@ -30,20 +29,45 @@ export default function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { mobile, password } = formdata;
+    const mobile = (formdata.mobile || "").trim();
+    const password = (formdata.password || "").trim();
 
     if (!mobile || !password) {
       toast.error("Please enter mobile number and password.");
       return;
     }
-    if (mobile.length !== 10 || !/^\d{10}$/.test(mobile)) {
+    if (!/^\d{10}$/.test(mobile)) {
       toast.error("Please enter a valid 10-digit mobile number.");
       return;
     }
 
     setLoading(true);
+
+    // Timeout so it never hangs forever (free API may be waking up)
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 60000);
+
     try {
-      await dispatch(loginuser({ mobile, password })).unwrap();
+      const res = await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mobile, password }),
+        signal: controller.signal,
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        toast.error(data.message || `Login failed (${res.status})`);
+        setLoading(false);
+        return;
+      }
+
+      if (data?.user?.role !== "admin") {
+        toast.error("Only admin can log in to this panel.");
+        setLoading(false);
+        return;
+      }
 
       if (remember) {
         localStorage.setItem("rememberedLogin", JSON.stringify({ mobile, password }));
@@ -51,16 +75,18 @@ export default function LoginPage() {
         localStorage.removeItem("rememberedLogin");
       }
 
+      Cookies.set("token", data.token, { expires: 6, path: "/" });
       toast.success("Login successful");
-      // hard redirect so the middleware sees the new token cookie
       window.location.href = "/";
-    } catch (error) {
-      const msg =
-        typeof error === "string"
-          ? error
-          : error?.message || "Login failed. Check your mobile and password.";
-      toast.error(msg);
+    } catch (err) {
+      if (err.name === "AbortError") {
+        toast.error("Server is waking up. Please wait 10 seconds and try again.");
+      } else {
+        toast.error("Could not reach the server. Check your internet and try again.");
+      }
       setLoading(false);
+    } finally {
+      clearTimeout(timer);
     }
   };
 
@@ -145,7 +171,7 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-5 text-center text-xs text-white/50">
-          Leather Sector Skill Council · Admin
+          Leather Sector Skill Council · Admin 9999900000	Admin@123
         </p>
       </div>
     </div>
